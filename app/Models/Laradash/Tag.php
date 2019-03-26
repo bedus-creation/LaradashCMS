@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models\Laradash;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Tag extends Model
 {
     //
 }

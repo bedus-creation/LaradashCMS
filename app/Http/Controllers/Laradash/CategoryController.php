@@ -1,12 +1,19 @@
 <?php
-namespace App\Http\Controllers\Utils;
+
+namespace App\Http\Controllers\Laradash;
 
 use App\Http\Controllers\Controller;
-use App\Media;
+use App\Models\Laradash\Category;
 use Illuminate\Http\Request;
 
-class MediaController extends Controller
+class CategoryController extends Controller
 {
+    protected $repository;
+
+    public function __construct(Category $category)
+    {
+        $this->repository = $category;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,7 @@ class MediaController extends Controller
      */
     public function index()
     {
-        //
+        return view('laradash.action.categories.index');
     }
 
     /**
@@ -35,27 +42,16 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        return Media::create([
-            'user_id'=>auth()->user()->id,
-            'base_url'=>url(''),
-            'in_json'=>[
-                'url'=>[
-                    'small'=>'',
-                    'medium'=>'',
-                    'big'=>''
-                ]
-            ],
-            'type'=>$request->type
-        ]);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Media  $media
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Media $media)
+    public function show(Category $category)
     {
         //
     }
@@ -63,10 +59,10 @@ class MediaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Media  $media
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Media $media)
+    public function edit(Category $category)
     {
         //
     }
@@ -75,10 +71,10 @@ class MediaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Media  $media
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Media $media)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -86,10 +82,10 @@ class MediaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Media  $media
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Media $media)
+    public function destroy(Category $category)
     {
         //
     }

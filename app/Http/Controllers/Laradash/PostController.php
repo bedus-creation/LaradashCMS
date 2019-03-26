@@ -1,13 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Utils;
+namespace App\Http\Controllers\Laradash;
 
-use App\Http\Controllers\Controller;
-use App\Category;
+use App\Models\Laradash\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+
+class PostController extends Controller
 {
+    protected $repository;
+
+    public function __construct(Post $repository)
+    {
+        $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $post = $this->repository->orderBy('id', 'desc')->get();
+
+        return view('action.post.index', compact('post'));
     }
 
     /**
@@ -25,7 +34,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('action.post.create');
     }
 
     /**
@@ -42,10 +51,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
         //
     }
@@ -53,10 +62,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +74,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +85,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         //
     }

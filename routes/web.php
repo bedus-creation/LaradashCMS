@@ -6,12 +6,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix'=>'action'],function(){
-    Route::resource('posts','PostController');
-});
-
-Route::get('/fileupload',function(){
+Route::get('/fileupload', function () {
     return view('fileupload');
 });
 
-Route::get('sitemap.xml','Utils\SitemapController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
